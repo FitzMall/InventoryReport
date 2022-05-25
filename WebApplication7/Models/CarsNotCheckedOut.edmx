@@ -1,0 +1,1183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ChecklistsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Checklists.dbo.AccessList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AccessList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="UserRole" Type="int" />
+          <Property Name="Permissions" Type="varchar" MaxLength="2000" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Checklists.dbo.AccessListHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AccessListHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="AccessListID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccessListID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Permissions" Type="varchar" MaxLength="2000" />
+          <Property Name="UserRole" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Checklist">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="MetaDataTitle1" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataTitle2" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataTitle3" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataTitle4" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataTitle5" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataTitle6" Type="varchar" MaxLength="50" />
+          <Property Name="IsMeta1Searchable" Type="bit" />
+          <Property Name="IsMeta2Searchable" Type="bit" />
+          <Property Name="IsMeta3Searchable" Type="bit" />
+          <Property Name="IsMeta4Searchable" Type="bit" />
+          <Property Name="IsMeta5Searchable" Type="bit" />
+          <Property Name="IsMeta6Searchable" Type="bit" />
+          <Property Name="IsMeta1Required" Type="bit" />
+          <Property Name="IsMeta2Required" Type="bit" />
+          <Property Name="IsMeta3Required" Type="bit" />
+          <Property Name="IsMeta4Required" Type="bit" />
+          <Property Name="IsMeta5Required" Type="bit" />
+          <Property Name="IsMeta6Required" Type="bit" />
+          <Property Name="MetaDataTitle7" Type="varchar" MaxLength="50" />
+          <Property Name="IsMeta7Searchable" Type="bit" />
+          <Property Name="IsMeta7Required" Type="bit" />
+          <Property Name="MetaDataTitle8" Type="varchar" MaxLength="50" />
+          <Property Name="IsMeta8Searchable" Type="bit" />
+          <Property Name="IsMeta8Required" Type="bit" />
+        </EntityType>
+        <EntityType Name="ChecklistItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChecklistSectionID" Type="int" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="HasCheckbox" Type="bit" />
+          <Property Name="ItemText" Type="varchar" MaxLength="1000" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="ResponseText" Type="varchar" MaxLength="50" />
+          <Property Name="OptionType1" Type="varchar" MaxLength="15" />
+          <Property Name="AllowAutoChecking" Type="bit" />
+          <Property Name="OptionType2" Type="varchar" MaxLength="15" />
+          <Property Name="OptionType3" Type="varchar" MaxLength="15" />
+          <Property Name="OptionType4" Type="varchar" MaxLength="15" />
+          <Property Name="HasITDropDown1" Type="bit" />
+          <Property Name="ITDropDownType1" Type="varchar" MaxLength="20" />
+          <Property Name="HasITDropDown2" Type="bit" />
+          <Property Name="ITDropDownType2" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ChecklistItemRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChecklistItemID" Type="int" Nullable="false" />
+          <Property Name="ChecklistRecordID" Type="int" Nullable="false" />
+          <Property Name="IsChecked" Type="bit" />
+          <Property Name="IsOption1Selected" Type="bit" />
+          <Property Name="IsOption2Selected" Type="bit" />
+          <Property Name="IsOption3Selected" Type="bit" />
+          <Property Name="IsOption4Selected" Type="bit" />
+          <Property Name="Option1Text" Type="varchar" MaxLength="100" />
+          <Property Name="Option2Text" Type="varchar" MaxLength="100" />
+          <Property Name="Option3Text" Type="varchar" MaxLength="100" />
+          <Property Name="Option4Text" Type="varchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="OptionType1" Type="varchar" MaxLength="15" />
+          <Property Name="ChecklistSectionID" Type="int" />
+          <Property Name="OptionType2" Type="varchar" MaxLength="15" />
+          <Property Name="OptionType3" Type="varchar" MaxLength="15" />
+          <Property Name="OptionType4" Type="varchar" MaxLength="15" />
+          <Property Name="ITDropDownText1" Type="varchar" MaxLength="100" />
+          <Property Name="ITDropDownText2" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Checklists.dbo.ChecklistItemRecordHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChecklistItemRecordHistory">
+          <Key>
+            <PropertyRef Name="ChecklistItemID" />
+            <PropertyRef Name="ChecklistRecordID" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ChecklistItemID" Type="int" Nullable="false" />
+          <Property Name="ChecklistRecordID" Type="int" Nullable="false" />
+          <Property Name="IsChecked" Type="bit" />
+          <Property Name="IsOption1Selected" Type="bit" />
+          <Property Name="IsOption2Selected" Type="bit" />
+          <Property Name="IsOption3Selected" Type="bit" />
+          <Property Name="IsOption4Selected" Type="bit" />
+          <Property Name="Option1Text" Type="varchar" MaxLength="100" />
+          <Property Name="Option2Text" Type="varchar" MaxLength="100" />
+          <Property Name="Option3Text" Type="varchar" MaxLength="100" />
+          <Property Name="Option4Text" Type="varchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="OptionType1" Type="varchar" MaxLength="15" />
+          <Property Name="ChecklistSectionID" Type="int" />
+          <Property Name="OptionType2" Type="varchar" MaxLength="15" />
+          <Property Name="OptionType3" Type="varchar" MaxLength="15" />
+          <Property Name="OptionType4" Type="varchar" MaxLength="15" />
+          <Property Name="ITDropDownText1" Type="varchar" MaxLength="100" />
+          <Property Name="ITDropDownText2" Type="varchar" MaxLength="100" />
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChecklistRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChecklistID" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="MetaDataValue1" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue2" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue3" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue4" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue5" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue6" Type="varchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="MetaDataValue7" Type="varchar" MaxLength="50" />
+          <Property Name="Action" Type="varchar" MaxLength="20" />
+          <Property Name="MetaDataValue8" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Checklists.dbo.ChecklistRecordHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChecklistRecordHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ChecklistID" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ChecklistID" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="MetaDataValue1" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue2" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue3" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue4" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue5" Type="varchar" MaxLength="50" />
+          <Property Name="MetaDataValue6" Type="varchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="MetaDataValue7" Type="varchar" MaxLength="50" />
+          <Property Name="Action" Type="varchar" MaxLength="20" />
+          <Property Name="MetaDataValue8" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChecklistSection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChecklistID" Type="int" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="SectionLabel" Type="varchar" MaxLength="100" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="OptionName1" Type="varchar" MaxLength="20" />
+          <Property Name="OptionName2" Type="varchar" MaxLength="20" />
+          <Property Name="OptionName3" Type="varchar" MaxLength="20" />
+          <Property Name="OptionName4" Type="varchar" MaxLength="20" />
+          <Property Name="HTMLHeaderType" Type="tinyint" />
+          <Property Name="CanCheckAllOption1" Type="bit" />
+          <Property Name="CanCheckAllOption2" Type="bit" />
+          <Property Name="CanCheckAllOption3" Type="bit" />
+          <Property Name="CanCheckAllOption4" Type="bit" />
+        </EntityType>
+        <EntityType Name="ChecklistStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Checklists.dbo.dbtest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="dbtest">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MetaDataValue1" Type="varchar" MaxLength="100" />
+          <Property Name="MetaDataValue2" Type="varchar" MaxLength="10" />
+          <Property Name="MetaDataValue3" Type="varchar" MaxLength="4" />
+          <Property Name="MetaDataValue4" Type="char" MaxLength="3" />
+          <Property Name="MetaDataValue5" Type="varchar" MaxLength="30" />
+          <Property Name="MetaDataValue6" Type="varchar" MaxLength="10" />
+          <Property Name="MetaDataValue7" Type="varchar" MaxLength="17" />
+          <Property Name="MetaDataValue8" Type="varchar" MaxLength="10" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Checklists.dbo.Locations_lkup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Locations_lkup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="100" />
+          <Property Name="PermissionCode" Type="varchar" MaxLength="10" />
+          <Property Name="LocCode" Type="varchar" MaxLength="100" />
+          <Property Name="Mall" Type="varchar" MaxLength="20" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Checklists.dbo.UnCheckedCars' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UnCheckedCars">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MetaDataValue1" Type="varchar" MaxLength="100" />
+          <Property Name="MetaDataValue2" Type="varchar" MaxLength="10" />
+          <Property Name="MetaDataValue3" Type="varchar" MaxLength="4" />
+          <Property Name="MetaDataValue4" Type="char" MaxLength="3" />
+          <Property Name="MetaDataValue5" Type="varchar" MaxLength="30" />
+          <Property Name="MetaDataValue6" Type="varchar" MaxLength="10" />
+          <Property Name="MetaDataValue7" Type="varchar" MaxLength="17" />
+          <Property Name="MetaDataValue8" Type="varchar" MaxLength="10" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" Nullable="false" />
+          <Property Name="loc" Type="varchar" MaxLength="4" />
+        </EntityType>
+        <Association Name="FK__Checklist__Check__2A4B4B5E">
+          <End Role="Checklist" Type="Self.Checklist" Multiplicity="1" />
+          <End Role="ChecklistSection" Type="Self.ChecklistSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Checklist">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistSection">
+              <PropertyRef Name="ChecklistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checklist__Check__2D27B809">
+          <End Role="ChecklistSection" Type="Self.ChecklistSection" Multiplicity="1" />
+          <End Role="ChecklistItem" Type="Self.ChecklistItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistSection">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistItem">
+              <PropertyRef Name="ChecklistSectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checklist__Check__300424B4">
+          <End Role="Checklist" Type="Self.Checklist" Multiplicity="1" />
+          <End Role="ChecklistRecord" Type="Self.ChecklistRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Checklist">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistRecord">
+              <PropertyRef Name="ChecklistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checklist__Check__47DBAE45">
+          <End Role="ChecklistItem" Type="Self.ChecklistItem" Multiplicity="1" />
+          <End Role="ChecklistItemRecord" Type="Self.ChecklistItemRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistItemRecord">
+              <PropertyRef Name="ChecklistItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checklist__Check__48CFD27E">
+          <End Role="ChecklistRecord" Type="Self.ChecklistRecord" Multiplicity="1" />
+          <End Role="ChecklistItemRecord" Type="Self.ChecklistItemRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistRecord">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistItemRecord">
+              <PropertyRef Name="ChecklistRecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_checklistrecord_Status">
+          <End Role="ChecklistStatus" Type="Self.ChecklistStatus" Multiplicity="0..1" />
+          <End Role="ChecklistRecord" Type="Self.ChecklistRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistRecord">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChecklistsModelStoreContainer">
+          <EntitySet Name="Checklist" EntityType="Self.Checklist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChecklistItem" EntityType="Self.ChecklistItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChecklistItemRecord" EntityType="Self.ChecklistItemRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChecklistRecord" EntityType="Self.ChecklistRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChecklistSection" EntityType="Self.ChecklistSection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChecklistStatus" EntityType="Self.ChecklistStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccessList" EntityType="Self.AccessList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AccessList].[ID] AS [ID], 
+    [AccessList].[UserID] AS [UserID], 
+    [AccessList].[UserRole] AS [UserRole], 
+    [AccessList].[Permissions] AS [Permissions], 
+    [AccessList].[DateCreated] AS [DateCreated], 
+    [AccessList].[DateUpdated] AS [DateUpdated]
+    FROM [dbo].[AccessList] AS [AccessList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AccessListHistory" EntityType="Self.AccessListHistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AccessListHistory].[ID] AS [ID], 
+    [AccessListHistory].[AccessListID] AS [AccessListID], 
+    [AccessListHistory].[UserID] AS [UserID], 
+    [AccessListHistory].[Permissions] AS [Permissions], 
+    [AccessListHistory].[UserRole] AS [UserRole], 
+    [AccessListHistory].[DateUpdated] AS [DateUpdated]
+    FROM [dbo].[AccessListHistory] AS [AccessListHistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChecklistItemRecordHistory" EntityType="Self.ChecklistItemRecordHistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChecklistItemRecordHistory].[ChecklistItemID] AS [ChecklistItemID], 
+    [ChecklistItemRecordHistory].[ChecklistRecordID] AS [ChecklistRecordID], 
+    [ChecklistItemRecordHistory].[IsChecked] AS [IsChecked], 
+    [ChecklistItemRecordHistory].[IsOption1Selected] AS [IsOption1Selected], 
+    [ChecklistItemRecordHistory].[IsOption2Selected] AS [IsOption2Selected], 
+    [ChecklistItemRecordHistory].[IsOption3Selected] AS [IsOption3Selected], 
+    [ChecklistItemRecordHistory].[IsOption4Selected] AS [IsOption4Selected], 
+    [ChecklistItemRecordHistory].[Option1Text] AS [Option1Text], 
+    [ChecklistItemRecordHistory].[Option2Text] AS [Option2Text], 
+    [ChecklistItemRecordHistory].[Option3Text] AS [Option3Text], 
+    [ChecklistItemRecordHistory].[Option4Text] AS [Option4Text], 
+    [ChecklistItemRecordHistory].[DateCreated] AS [DateCreated], 
+    [ChecklistItemRecordHistory].[DateUpdated] AS [DateUpdated], 
+    [ChecklistItemRecordHistory].[OptionType1] AS [OptionType1], 
+    [ChecklistItemRecordHistory].[ChecklistSectionID] AS [ChecklistSectionID], 
+    [ChecklistItemRecordHistory].[OptionType2] AS [OptionType2], 
+    [ChecklistItemRecordHistory].[OptionType3] AS [OptionType3], 
+    [ChecklistItemRecordHistory].[OptionType4] AS [OptionType4], 
+    [ChecklistItemRecordHistory].[ITDropDownText1] AS [ITDropDownText1], 
+    [ChecklistItemRecordHistory].[ITDropDownText2] AS [ITDropDownText2], 
+    [ChecklistItemRecordHistory].[ID] AS [ID]
+    FROM [dbo].[ChecklistItemRecordHistory] AS [ChecklistItemRecordHistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChecklistRecordHistory" EntityType="Self.ChecklistRecordHistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChecklistRecordHistory].[ID] AS [ID], 
+    [ChecklistRecordHistory].[ChecklistID] AS [ChecklistID], 
+    [ChecklistRecordHistory].[DateCreated] AS [DateCreated], 
+    [ChecklistRecordHistory].[DateUpdated] AS [DateUpdated], 
+    [ChecklistRecordHistory].[MetaDataValue1] AS [MetaDataValue1], 
+    [ChecklistRecordHistory].[MetaDataValue2] AS [MetaDataValue2], 
+    [ChecklistRecordHistory].[MetaDataValue3] AS [MetaDataValue3], 
+    [ChecklistRecordHistory].[MetaDataValue4] AS [MetaDataValue4], 
+    [ChecklistRecordHistory].[MetaDataValue5] AS [MetaDataValue5], 
+    [ChecklistRecordHistory].[MetaDataValue6] AS [MetaDataValue6], 
+    [ChecklistRecordHistory].[UserID] AS [UserID], 
+    [ChecklistRecordHistory].[Status] AS [Status], 
+    [ChecklistRecordHistory].[MetaDataValue7] AS [MetaDataValue7], 
+    [ChecklistRecordHistory].[Action] AS [Action], 
+    [ChecklistRecordHistory].[MetaDataValue8] AS [MetaDataValue8]
+    FROM [dbo].[ChecklistRecordHistory] AS [ChecklistRecordHistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="dbtest" EntityType="Self.dbtest" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [dbtest].[ID] AS [ID], 
+    [dbtest].[MetaDataValue1] AS [MetaDataValue1], 
+    [dbtest].[MetaDataValue2] AS [MetaDataValue2], 
+    [dbtest].[MetaDataValue3] AS [MetaDataValue3], 
+    [dbtest].[MetaDataValue4] AS [MetaDataValue4], 
+    [dbtest].[MetaDataValue5] AS [MetaDataValue5], 
+    [dbtest].[MetaDataValue6] AS [MetaDataValue6], 
+    [dbtest].[MetaDataValue7] AS [MetaDataValue7], 
+    [dbtest].[MetaDataValue8] AS [MetaDataValue8], 
+    [dbtest].[Status] AS [Status], 
+    [dbtest].[UserID] AS [UserID], 
+    [dbtest].[FullName] AS [FullName], 
+    [dbtest].[DateCreated] AS [DateCreated], 
+    [dbtest].[DateUpdated] AS [DateUpdated]
+    FROM [dbo].[dbtest] AS [dbtest]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Locations_lkup" EntityType="Self.Locations_lkup" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Locations_lkup].[ID] AS [ID], 
+    [Locations_lkup].[FullName] AS [FullName], 
+    [Locations_lkup].[PermissionCode] AS [PermissionCode], 
+    [Locations_lkup].[LocCode] AS [LocCode], 
+    [Locations_lkup].[Mall] AS [Mall], 
+    [Locations_lkup].[State] AS [State]
+    FROM [dbo].[Locations_lkup] AS [Locations_lkup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UnCheckedCars" EntityType="Self.UnCheckedCars" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UnCheckedCars].[ID] AS [ID], 
+    [UnCheckedCars].[MetaDataValue1] AS [MetaDataValue1], 
+    [UnCheckedCars].[MetaDataValue2] AS [MetaDataValue2], 
+    [UnCheckedCars].[MetaDataValue3] AS [MetaDataValue3], 
+    [UnCheckedCars].[MetaDataValue4] AS [MetaDataValue4], 
+    [UnCheckedCars].[MetaDataValue5] AS [MetaDataValue5], 
+    [UnCheckedCars].[MetaDataValue6] AS [MetaDataValue6], 
+    [UnCheckedCars].[MetaDataValue7] AS [MetaDataValue7], 
+    [UnCheckedCars].[MetaDataValue8] AS [MetaDataValue8], 
+    [UnCheckedCars].[Status] AS [Status], 
+    [UnCheckedCars].[UserID] AS [UserID], 
+    [UnCheckedCars].[FullName] AS [FullName], 
+    [UnCheckedCars].[DateCreated] AS [DateCreated], 
+    [UnCheckedCars].[DateUpdated] AS [DateUpdated], 
+    [UnCheckedCars].[loc] AS [loc]
+    FROM [dbo].[UnCheckedCars] AS [UnCheckedCars]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Checklist__Check__2A4B4B5E" Association="Self.FK__Checklist__Check__2A4B4B5E">
+            <End Role="Checklist" EntitySet="Checklist" />
+            <End Role="ChecklistSection" EntitySet="ChecklistSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checklist__Check__2D27B809" Association="Self.FK__Checklist__Check__2D27B809">
+            <End Role="ChecklistSection" EntitySet="ChecklistSection" />
+            <End Role="ChecklistItem" EntitySet="ChecklistItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checklist__Check__300424B4" Association="Self.FK__Checklist__Check__300424B4">
+            <End Role="Checklist" EntitySet="Checklist" />
+            <End Role="ChecklistRecord" EntitySet="ChecklistRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checklist__Check__47DBAE45" Association="Self.FK__Checklist__Check__47DBAE45">
+            <End Role="ChecklistItem" EntitySet="ChecklistItem" />
+            <End Role="ChecklistItemRecord" EntitySet="ChecklistItemRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checklist__Check__48CFD27E" Association="Self.FK__Checklist__Check__48CFD27E">
+            <End Role="ChecklistRecord" EntitySet="ChecklistRecord" />
+            <End Role="ChecklistItemRecord" EntitySet="ChecklistItemRecord" />
+          </AssociationSet>
+          <AssociationSet Name="fk_checklistrecord_Status" Association="Self.fk_checklistrecord_Status">
+            <End Role="ChecklistStatus" EntitySet="ChecklistStatus" />
+            <End Role="ChecklistRecord" EntitySet="ChecklistRecord" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChecklistsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Checklist">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MetaDataTitle1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataTitle2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataTitle3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataTitle4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataTitle5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataTitle6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsMeta1Searchable" Type="Boolean" />
+          <Property Name="IsMeta2Searchable" Type="Boolean" />
+          <Property Name="IsMeta3Searchable" Type="Boolean" />
+          <Property Name="IsMeta4Searchable" Type="Boolean" />
+          <Property Name="IsMeta5Searchable" Type="Boolean" />
+          <Property Name="IsMeta6Searchable" Type="Boolean" />
+          <Property Name="IsMeta1Required" Type="Boolean" />
+          <Property Name="IsMeta2Required" Type="Boolean" />
+          <Property Name="IsMeta3Required" Type="Boolean" />
+          <Property Name="IsMeta4Required" Type="Boolean" />
+          <Property Name="IsMeta5Required" Type="Boolean" />
+          <Property Name="IsMeta6Required" Type="Boolean" />
+          <Property Name="MetaDataTitle7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsMeta7Searchable" Type="Boolean" />
+          <Property Name="IsMeta7Required" Type="Boolean" />
+          <Property Name="MetaDataTitle8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsMeta8Searchable" Type="Boolean" />
+          <Property Name="IsMeta8Required" Type="Boolean" />
+          <NavigationProperty Name="ChecklistSections" Relationship="Self.FK__Checklist__Check__2A4B4B5E" FromRole="Checklist" ToRole="ChecklistSection" />
+          <NavigationProperty Name="ChecklistRecords" Relationship="Self.FK__Checklist__Check__300424B4" FromRole="Checklist" ToRole="ChecklistRecord" />
+        </EntityType>
+        <EntityType Name="ChecklistItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChecklistSectionID" Type="Int32" Nullable="false" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="HasCheckbox" Type="Boolean" />
+          <Property Name="ItemText" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ResponseText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OptionType1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AllowAutoChecking" Type="Boolean" />
+          <Property Name="OptionType2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OptionType3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OptionType4" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HasITDropDown1" Type="Boolean" />
+          <Property Name="ITDropDownType1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HasITDropDown2" Type="Boolean" />
+          <Property Name="ITDropDownType2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChecklistSection" Relationship="Self.FK__Checklist__Check__2D27B809" FromRole="ChecklistItem" ToRole="ChecklistSection" />
+          <NavigationProperty Name="ChecklistItemRecords" Relationship="Self.FK__Checklist__Check__47DBAE45" FromRole="ChecklistItem" ToRole="ChecklistItemRecord" />
+        </EntityType>
+        <EntityType Name="ChecklistItemRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChecklistItemID" Type="Int32" Nullable="false" />
+          <Property Name="ChecklistRecordID" Type="Int32" Nullable="false" />
+          <Property Name="IsChecked" Type="Boolean" />
+          <Property Name="IsOption1Selected" Type="Boolean" />
+          <Property Name="IsOption2Selected" Type="Boolean" />
+          <Property Name="IsOption3Selected" Type="Boolean" />
+          <Property Name="IsOption4Selected" Type="Boolean" />
+          <Property Name="Option1Text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Option2Text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Option3Text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Option4Text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OptionType1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ChecklistSectionID" Type="Int32" />
+          <Property Name="OptionType2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OptionType3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OptionType4" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ITDropDownText1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ITDropDownText2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChecklistItem" Relationship="Self.FK__Checklist__Check__47DBAE45" FromRole="ChecklistItemRecord" ToRole="ChecklistItem" />
+          <NavigationProperty Name="ChecklistRecord" Relationship="Self.FK__Checklist__Check__48CFD27E" FromRole="ChecklistItemRecord" ToRole="ChecklistRecord" />
+        </EntityType>
+        <EntityType Name="ChecklistRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChecklistID" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MetaDataValue1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="MetaDataValue7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Checklist" Relationship="Self.FK__Checklist__Check__300424B4" FromRole="ChecklistRecord" ToRole="Checklist" />
+          <NavigationProperty Name="ChecklistItemRecords" Relationship="Self.FK__Checklist__Check__48CFD27E" FromRole="ChecklistRecord" ToRole="ChecklistItemRecord" />
+          <NavigationProperty Name="ChecklistStatu" Relationship="Self.fk_checklistrecord_Status" FromRole="ChecklistRecord" ToRole="ChecklistStatus" />
+        </EntityType>
+        <EntityType Name="ChecklistSection">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChecklistID" Type="Int32" Nullable="false" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="SectionLabel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OptionName1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OptionName2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OptionName3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OptionName4" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HTMLHeaderType" Type="Byte" />
+          <Property Name="CanCheckAllOption1" Type="Boolean" />
+          <Property Name="CanCheckAllOption2" Type="Boolean" />
+          <Property Name="CanCheckAllOption3" Type="Boolean" />
+          <Property Name="CanCheckAllOption4" Type="Boolean" />
+          <NavigationProperty Name="Checklist" Relationship="Self.FK__Checklist__Check__2A4B4B5E" FromRole="ChecklistSection" ToRole="Checklist" />
+          <NavigationProperty Name="ChecklistItems" Relationship="Self.FK__Checklist__Check__2D27B809" FromRole="ChecklistSection" ToRole="ChecklistItem" />
+        </EntityType>
+        <EntityType Name="ChecklistStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChecklistRecords" Relationship="Self.fk_checklistrecord_Status" FromRole="ChecklistStatus" ToRole="ChecklistRecord" />
+        </EntityType>
+        <EntityType Name="AccessList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UserRole" Type="Int32" />
+          <Property Name="Permissions" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="AccessListHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="AccessListID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccessListID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Permissions" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ChecklistItemRecordHistory">
+          <Key>
+            <PropertyRef Name="ChecklistItemID" />
+            <PropertyRef Name="ChecklistRecordID" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ChecklistItemID" Type="Int32" Nullable="false" />
+          <Property Name="ChecklistRecordID" Type="Int32" Nullable="false" />
+          <Property Name="IsChecked" Type="Boolean" />
+          <Property Name="IsOption1Selected" Type="Boolean" />
+          <Property Name="IsOption2Selected" Type="Boolean" />
+          <Property Name="IsOption3Selected" Type="Boolean" />
+          <Property Name="IsOption4Selected" Type="Boolean" />
+          <Property Name="Option1Text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Option2Text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Option3Text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Option4Text" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OptionType1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ChecklistSectionID" Type="Int32" />
+          <Property Name="OptionType2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OptionType3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OptionType4" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ITDropDownText1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ITDropDownText2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChecklistRecordHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ChecklistID" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ChecklistID" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MetaDataValue1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="MetaDataValue7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dbtest">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MetaDataValue1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue3" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue4" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="MetaDataValue5" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue6" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue7" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue8" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Locations_lkup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PermissionCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LocCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mall" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Checklist__Check__2A4B4B5E">
+          <End Role="Checklist" Type="Self.Checklist" Multiplicity="1" />
+          <End Role="ChecklistSection" Type="Self.ChecklistSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Checklist">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistSection">
+              <PropertyRef Name="ChecklistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checklist__Check__300424B4">
+          <End Role="Checklist" Type="Self.Checklist" Multiplicity="1" />
+          <End Role="ChecklistRecord" Type="Self.ChecklistRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Checklist">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistRecord">
+              <PropertyRef Name="ChecklistID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checklist__Check__2D27B809">
+          <End Role="ChecklistSection" Type="Self.ChecklistSection" Multiplicity="1" />
+          <End Role="ChecklistItem" Type="Self.ChecklistItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistSection">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistItem">
+              <PropertyRef Name="ChecklistSectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checklist__Check__47DBAE45">
+          <End Role="ChecklistItem" Type="Self.ChecklistItem" Multiplicity="1" />
+          <End Role="ChecklistItemRecord" Type="Self.ChecklistItemRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistItem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistItemRecord">
+              <PropertyRef Name="ChecklistItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checklist__Check__48CFD27E">
+          <End Role="ChecklistRecord" Type="Self.ChecklistRecord" Multiplicity="1" />
+          <End Role="ChecklistItemRecord" Type="Self.ChecklistItemRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistRecord">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistItemRecord">
+              <PropertyRef Name="ChecklistRecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_checklistrecord_Status">
+          <End Role="ChecklistStatus" Type="Self.ChecklistStatu" Multiplicity="0..1" />
+          <End Role="ChecklistRecord" Type="Self.ChecklistRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ChecklistRecord">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChecklistsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Checklists" EntityType="Self.Checklist" />
+          <EntitySet Name="ChecklistItems" EntityType="Self.ChecklistItem" />
+          <EntitySet Name="ChecklistItemRecords" EntityType="Self.ChecklistItemRecord" />
+          <EntitySet Name="ChecklistRecords" EntityType="Self.ChecklistRecord" />
+          <EntitySet Name="ChecklistSections" EntityType="Self.ChecklistSection" />
+          <EntitySet Name="ChecklistStatus" EntityType="Self.ChecklistStatu" />
+          <EntitySet Name="AccessLists" EntityType="Self.AccessList" />
+          <EntitySet Name="AccessListHistories" EntityType="Self.AccessListHistory" />
+          <EntitySet Name="ChecklistItemRecordHistories" EntityType="Self.ChecklistItemRecordHistory" />
+          <EntitySet Name="ChecklistRecordHistories" EntityType="Self.ChecklistRecordHistory" />
+          <EntitySet Name="dbtests" EntityType="Self.dbtest" />
+          <EntitySet Name="Locations_lkup" EntityType="Self.Locations_lkup" />
+          <AssociationSet Name="FK__Checklist__Check__2A4B4B5E" Association="Self.FK__Checklist__Check__2A4B4B5E">
+            <End Role="Checklist" EntitySet="Checklists" />
+            <End Role="ChecklistSection" EntitySet="ChecklistSections" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checklist__Check__300424B4" Association="Self.FK__Checklist__Check__300424B4">
+            <End Role="Checklist" EntitySet="Checklists" />
+            <End Role="ChecklistRecord" EntitySet="ChecklistRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checklist__Check__2D27B809" Association="Self.FK__Checklist__Check__2D27B809">
+            <End Role="ChecklistSection" EntitySet="ChecklistSections" />
+            <End Role="ChecklistItem" EntitySet="ChecklistItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checklist__Check__47DBAE45" Association="Self.FK__Checklist__Check__47DBAE45">
+            <End Role="ChecklistItem" EntitySet="ChecklistItems" />
+            <End Role="ChecklistItemRecord" EntitySet="ChecklistItemRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checklist__Check__48CFD27E" Association="Self.FK__Checklist__Check__48CFD27E">
+            <End Role="ChecklistRecord" EntitySet="ChecklistRecords" />
+            <End Role="ChecklistItemRecord" EntitySet="ChecklistItemRecords" />
+          </AssociationSet>
+          <AssociationSet Name="fk_checklistrecord_Status" Association="Self.fk_checklistrecord_Status">
+            <End Role="ChecklistStatus" EntitySet="ChecklistStatus" />
+            <End Role="ChecklistRecord" EntitySet="ChecklistRecords" />
+          </AssociationSet>
+          <EntitySet Name="UnCheckedCars" EntityType="ChecklistsModel.UnCheckedCar" />
+        </EntityContainer>
+        <EntityType Name="UnCheckedCar">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="DateCreated" />
+            <PropertyRef Name="DateUpdated" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MetaDataValue1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue3" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue4" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="MetaDataValue5" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue6" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue7" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="MetaDataValue8" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="loc" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChecklistsModelStoreContainer" CdmEntityContainer="ChecklistsEntities">
+          <EntitySetMapping Name="Checklists">
+            <EntityTypeMapping TypeName="ChecklistsModel.Checklist">
+              <MappingFragment StoreEntitySet="Checklist">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="MetaDataTitle1" ColumnName="MetaDataTitle1" />
+                <ScalarProperty Name="MetaDataTitle2" ColumnName="MetaDataTitle2" />
+                <ScalarProperty Name="MetaDataTitle3" ColumnName="MetaDataTitle3" />
+                <ScalarProperty Name="MetaDataTitle4" ColumnName="MetaDataTitle4" />
+                <ScalarProperty Name="MetaDataTitle5" ColumnName="MetaDataTitle5" />
+                <ScalarProperty Name="MetaDataTitle6" ColumnName="MetaDataTitle6" />
+                <ScalarProperty Name="IsMeta1Searchable" ColumnName="IsMeta1Searchable" />
+                <ScalarProperty Name="IsMeta2Searchable" ColumnName="IsMeta2Searchable" />
+                <ScalarProperty Name="IsMeta3Searchable" ColumnName="IsMeta3Searchable" />
+                <ScalarProperty Name="IsMeta4Searchable" ColumnName="IsMeta4Searchable" />
+                <ScalarProperty Name="IsMeta5Searchable" ColumnName="IsMeta5Searchable" />
+                <ScalarProperty Name="IsMeta6Searchable" ColumnName="IsMeta6Searchable" />
+                <ScalarProperty Name="IsMeta1Required" ColumnName="IsMeta1Required" />
+                <ScalarProperty Name="IsMeta2Required" ColumnName="IsMeta2Required" />
+                <ScalarProperty Name="IsMeta3Required" ColumnName="IsMeta3Required" />
+                <ScalarProperty Name="IsMeta4Required" ColumnName="IsMeta4Required" />
+                <ScalarProperty Name="IsMeta5Required" ColumnName="IsMeta5Required" />
+                <ScalarProperty Name="IsMeta6Required" ColumnName="IsMeta6Required" />
+                <ScalarProperty Name="MetaDataTitle7" ColumnName="MetaDataTitle7" />
+                <ScalarProperty Name="IsMeta7Searchable" ColumnName="IsMeta7Searchable" />
+                <ScalarProperty Name="IsMeta7Required" ColumnName="IsMeta7Required" />
+                <ScalarProperty Name="MetaDataTitle8" ColumnName="MetaDataTitle8" />
+                <ScalarProperty Name="IsMeta8Searchable" ColumnName="IsMeta8Searchable" />
+                <ScalarProperty Name="IsMeta8Required" ColumnName="IsMeta8Required" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistItems">
+            <EntityTypeMapping TypeName="ChecklistsModel.ChecklistItem">
+              <MappingFragment StoreEntitySet="ChecklistItem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ChecklistSectionID" ColumnName="ChecklistSectionID" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="HasCheckbox" ColumnName="HasCheckbox" />
+                <ScalarProperty Name="ItemText" ColumnName="ItemText" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="ResponseText" ColumnName="ResponseText" />
+                <ScalarProperty Name="OptionType1" ColumnName="OptionType1" />
+                <ScalarProperty Name="AllowAutoChecking" ColumnName="AllowAutoChecking" />
+                <ScalarProperty Name="OptionType2" ColumnName="OptionType2" />
+                <ScalarProperty Name="OptionType3" ColumnName="OptionType3" />
+                <ScalarProperty Name="OptionType4" ColumnName="OptionType4" />
+                <ScalarProperty Name="HasITDropDown1" ColumnName="HasITDropDown1" />
+                <ScalarProperty Name="ITDropDownType1" ColumnName="ITDropDownType1" />
+                <ScalarProperty Name="HasITDropDown2" ColumnName="HasITDropDown2" />
+                <ScalarProperty Name="ITDropDownType2" ColumnName="ITDropDownType2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistItemRecords">
+            <EntityTypeMapping TypeName="ChecklistsModel.ChecklistItemRecord">
+              <MappingFragment StoreEntitySet="ChecklistItemRecord">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ChecklistItemID" ColumnName="ChecklistItemID" />
+                <ScalarProperty Name="ChecklistRecordID" ColumnName="ChecklistRecordID" />
+                <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+                <ScalarProperty Name="IsOption1Selected" ColumnName="IsOption1Selected" />
+                <ScalarProperty Name="IsOption2Selected" ColumnName="IsOption2Selected" />
+                <ScalarProperty Name="IsOption3Selected" ColumnName="IsOption3Selected" />
+                <ScalarProperty Name="IsOption4Selected" ColumnName="IsOption4Selected" />
+                <ScalarProperty Name="Option1Text" ColumnName="Option1Text" />
+                <ScalarProperty Name="Option2Text" ColumnName="Option2Text" />
+                <ScalarProperty Name="Option3Text" ColumnName="Option3Text" />
+                <ScalarProperty Name="Option4Text" ColumnName="Option4Text" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="OptionType1" ColumnName="OptionType1" />
+                <ScalarProperty Name="ChecklistSectionID" ColumnName="ChecklistSectionID" />
+                <ScalarProperty Name="OptionType2" ColumnName="OptionType2" />
+                <ScalarProperty Name="OptionType3" ColumnName="OptionType3" />
+                <ScalarProperty Name="OptionType4" ColumnName="OptionType4" />
+                <ScalarProperty Name="ITDropDownText1" ColumnName="ITDropDownText1" />
+                <ScalarProperty Name="ITDropDownText2" ColumnName="ITDropDownText2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistRecords">
+            <EntityTypeMapping TypeName="ChecklistsModel.ChecklistRecord">
+              <MappingFragment StoreEntitySet="ChecklistRecord">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ChecklistID" ColumnName="ChecklistID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="MetaDataValue1" ColumnName="MetaDataValue1" />
+                <ScalarProperty Name="MetaDataValue2" ColumnName="MetaDataValue2" />
+                <ScalarProperty Name="MetaDataValue3" ColumnName="MetaDataValue3" />
+                <ScalarProperty Name="MetaDataValue4" ColumnName="MetaDataValue4" />
+                <ScalarProperty Name="MetaDataValue5" ColumnName="MetaDataValue5" />
+                <ScalarProperty Name="MetaDataValue6" ColumnName="MetaDataValue6" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MetaDataValue7" ColumnName="MetaDataValue7" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="MetaDataValue8" ColumnName="MetaDataValue8" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistSections">
+            <EntityTypeMapping TypeName="ChecklistsModel.ChecklistSection">
+              <MappingFragment StoreEntitySet="ChecklistSection">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ChecklistID" ColumnName="ChecklistID" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="SectionLabel" ColumnName="SectionLabel" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="OptionName1" ColumnName="OptionName1" />
+                <ScalarProperty Name="OptionName2" ColumnName="OptionName2" />
+                <ScalarProperty Name="OptionName3" ColumnName="OptionName3" />
+                <ScalarProperty Name="OptionName4" ColumnName="OptionName4" />
+                <ScalarProperty Name="HTMLHeaderType" ColumnName="HTMLHeaderType" />
+                <ScalarProperty Name="CanCheckAllOption1" ColumnName="CanCheckAllOption1" />
+                <ScalarProperty Name="CanCheckAllOption2" ColumnName="CanCheckAllOption2" />
+                <ScalarProperty Name="CanCheckAllOption3" ColumnName="CanCheckAllOption3" />
+                <ScalarProperty Name="CanCheckAllOption4" ColumnName="CanCheckAllOption4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistStatus">
+            <EntityTypeMapping TypeName="ChecklistsModel.ChecklistStatu">
+              <MappingFragment StoreEntitySet="ChecklistStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessLists">
+            <EntityTypeMapping TypeName="ChecklistsModel.AccessList">
+              <MappingFragment StoreEntitySet="AccessList">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="Permissions" ColumnName="Permissions" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessListHistories">
+            <EntityTypeMapping TypeName="ChecklistsModel.AccessListHistory">
+              <MappingFragment StoreEntitySet="AccessListHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AccessListID" ColumnName="AccessListID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Permissions" ColumnName="Permissions" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistItemRecordHistories">
+            <EntityTypeMapping TypeName="ChecklistsModel.ChecklistItemRecordHistory">
+              <MappingFragment StoreEntitySet="ChecklistItemRecordHistory">
+                <ScalarProperty Name="ChecklistItemID" ColumnName="ChecklistItemID" />
+                <ScalarProperty Name="ChecklistRecordID" ColumnName="ChecklistRecordID" />
+                <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+                <ScalarProperty Name="IsOption1Selected" ColumnName="IsOption1Selected" />
+                <ScalarProperty Name="IsOption2Selected" ColumnName="IsOption2Selected" />
+                <ScalarProperty Name="IsOption3Selected" ColumnName="IsOption3Selected" />
+                <ScalarProperty Name="IsOption4Selected" ColumnName="IsOption4Selected" />
+                <ScalarProperty Name="Option1Text" ColumnName="Option1Text" />
+                <ScalarProperty Name="Option2Text" ColumnName="Option2Text" />
+                <ScalarProperty Name="Option3Text" ColumnName="Option3Text" />
+                <ScalarProperty Name="Option4Text" ColumnName="Option4Text" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="OptionType1" ColumnName="OptionType1" />
+                <ScalarProperty Name="ChecklistSectionID" ColumnName="ChecklistSectionID" />
+                <ScalarProperty Name="OptionType2" ColumnName="OptionType2" />
+                <ScalarProperty Name="OptionType3" ColumnName="OptionType3" />
+                <ScalarProperty Name="OptionType4" ColumnName="OptionType4" />
+                <ScalarProperty Name="ITDropDownText1" ColumnName="ITDropDownText1" />
+                <ScalarProperty Name="ITDropDownText2" ColumnName="ITDropDownText2" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistRecordHistories">
+            <EntityTypeMapping TypeName="ChecklistsModel.ChecklistRecordHistory">
+              <MappingFragment StoreEntitySet="ChecklistRecordHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ChecklistID" ColumnName="ChecklistID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="MetaDataValue1" ColumnName="MetaDataValue1" />
+                <ScalarProperty Name="MetaDataValue2" ColumnName="MetaDataValue2" />
+                <ScalarProperty Name="MetaDataValue3" ColumnName="MetaDataValue3" />
+                <ScalarProperty Name="MetaDataValue4" ColumnName="MetaDataValue4" />
+                <ScalarProperty Name="MetaDataValue5" ColumnName="MetaDataValue5" />
+                <ScalarProperty Name="MetaDataValue6" ColumnName="MetaDataValue6" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MetaDataValue7" ColumnName="MetaDataValue7" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="MetaDataValue8" ColumnName="MetaDataValue8" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbtests">
+            <EntityTypeMapping TypeName="ChecklistsModel.dbtest">
+              <MappingFragment StoreEntitySet="dbtest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MetaDataValue1" ColumnName="MetaDataValue1" />
+                <ScalarProperty Name="MetaDataValue2" ColumnName="MetaDataValue2" />
+                <ScalarProperty Name="MetaDataValue3" ColumnName="MetaDataValue3" />
+                <ScalarProperty Name="MetaDataValue4" ColumnName="MetaDataValue4" />
+                <ScalarProperty Name="MetaDataValue5" ColumnName="MetaDataValue5" />
+                <ScalarProperty Name="MetaDataValue6" ColumnName="MetaDataValue6" />
+                <ScalarProperty Name="MetaDataValue7" ColumnName="MetaDataValue7" />
+                <ScalarProperty Name="MetaDataValue8" ColumnName="MetaDataValue8" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations_lkup">
+            <EntityTypeMapping TypeName="ChecklistsModel.Locations_lkup">
+              <MappingFragment StoreEntitySet="Locations_lkup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PermissionCode" ColumnName="PermissionCode" />
+                <ScalarProperty Name="LocCode" ColumnName="LocCode" />
+                <ScalarProperty Name="Mall" ColumnName="Mall" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnCheckedCars">
+            <EntityTypeMapping TypeName="ChecklistsModel.UnCheckedCar">
+              <MappingFragment StoreEntitySet="UnCheckedCars">
+                <ScalarProperty Name="loc" ColumnName="loc" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MetaDataValue8" ColumnName="MetaDataValue8" />
+                <ScalarProperty Name="MetaDataValue7" ColumnName="MetaDataValue7" />
+                <ScalarProperty Name="MetaDataValue6" ColumnName="MetaDataValue6" />
+                <ScalarProperty Name="MetaDataValue5" ColumnName="MetaDataValue5" />
+                <ScalarProperty Name="MetaDataValue4" ColumnName="MetaDataValue4" />
+                <ScalarProperty Name="MetaDataValue3" ColumnName="MetaDataValue3" />
+                <ScalarProperty Name="MetaDataValue2" ColumnName="MetaDataValue2" />
+                <ScalarProperty Name="MetaDataValue1" ColumnName="MetaDataValue1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

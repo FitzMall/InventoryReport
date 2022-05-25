@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WebApplication7.Models.UnCheckedCar>
+
+@{
+    ViewBag.Title = "Index";
+    var headertext = "Cars Not Checked Out at All Locations";
+    if (ViewBag.LocationCode != null)
+    {
+        headertext = "Cars Not Checked Out at Location: " + ViewBag.LocationCode;
+    }
+}
+
+<h2>@headertext</h2>
+
+
+
+
+<form action="Index">
+    <select id="SelectLocation">
+        <option></option>
+        <option value="~/UnCheckedCars/Index?ploc=CDO">CDO</option>
+        <option value="~/UnCheckedCars/Index?ploc=CJE">CJE</option>
+        <option value="~/UnCheckedCars/Index?ploc=CDO">CJN</option>
+        <option value="~/UnCheckedCars/Index?ploc=CJN">FAM</option>
+        <option value="~/UnCheckedCars/Index?ploc=FBS">FBS</option>
+        <option value="~/UnCheckedCars/Index?ploc=FCG">FCG</option>
+        <option value="~/UnCheckedCars/Index?ploc=FHG">FHG</option>
+        <option value="~/UnCheckedCars/Index?ploc=FHT">FHT</option>
+        <option value="~/UnCheckedCars/Index?ploc=FMM">FMM</option>
+        <option value="~/UnCheckedCars/Index?ploc=FOC">FOC</option>
+        <option value="~/UnCheckedCars/Index?ploc=FSS">FSS</option>
+        <option value="~/UnCheckedCars/Index?ploc=FTO">FTO</option>
+        <option value="~/UnCheckedCars/Index?ploc=FTN">FTN</option>
+        <option value="~/UnCheckedCars/Index?ploc=LFO">LFO</option>
+        <option value="~/UnCheckedCars/Index?ploc=LFT">LFT</option>
+        <option value="~/UnCheckedCars/Index?ploc=LFM">LFM</option>
+        <option value="~/UnCheckedCars/Index?ploc=WDC">WDC</option>
+    </select>
+    <input type=button value="Go" onclick="goToNewPage()" />
+</form>
+
+<table class="table">
+    <tr>
+
+        <th>
+            Year
+        </th>
+        <th>
+            Make
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Stock #
+        </th>
+        <th>
+            VIN
+        </th>
+        <th>
+            Location Code
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loc)
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Scripts.Render("~/Scripts/Index.js")

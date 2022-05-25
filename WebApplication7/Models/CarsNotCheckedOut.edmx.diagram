@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8dfe27db39ad49409fa13119d63f9401" Name="Diagram1">
+        <EntityTypeShape EntityType="ChecklistsModel.Checklist" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.ChecklistItem" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.ChecklistItemRecord" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.ChecklistRecord" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.ChecklistSection" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.ChecklistStatu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.AccessList" Width="1.5" PointX="2.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.AccessListHistory" Width="1.5" PointX="4.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.ChecklistItemRecordHistory" Width="1.5" PointX="6.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.ChecklistRecordHistory" Width="1.5" PointX="8.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.dbtest" Width="1.5" PointX="9.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChecklistsModel.Locations_lkup" Width="1.5" PointX="10.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="ChecklistsModel.FK__Checklist__Check__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="ChecklistsModel.FK__Checklist__Check__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="ChecklistsModel.FK__Checklist__Check__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="ChecklistsModel.FK__Checklist__Check__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="ChecklistsModel.FK__Checklist__Check__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="ChecklistsModel.fk_checklistrecord_Status" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ChecklistsModel.UnCheckedCar" Width="1.5" PointX="10.375" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

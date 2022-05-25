@@ -1,0 +1,58 @@
+﻿@model WebApplication7.Models.Locations_lkup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Locations_lkup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PermissionCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PermissionCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

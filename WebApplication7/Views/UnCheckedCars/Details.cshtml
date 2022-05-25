@@ -1,0 +1,82 @@
+﻿@model WebApplication7.Models.UnCheckedCar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UnCheckedCar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDataValue1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDataValue1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDataValue2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDataValue2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDataValue3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDataValue3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDataValue4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDataValue4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDataValue5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDataValue5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDataValue6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDataValue6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDataValue7)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDataValue7)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MetaDataValue8)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MetaDataValue8)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
