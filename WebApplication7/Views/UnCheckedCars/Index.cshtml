@@ -9,14 +9,16 @@
     }
 }
 
-<h2>@headertext</h2>
+<h2>
+    @headertext
 
 
 
 
 <form action="Index">
-    <select id="SelectLocation">
-        <option></option>
+    <select id="SelectLocation" onchange="goToNewPage()">
+        <option value="~/UnCheckedCars/Index"></option>
+        <option value="~/UnCheckedCars/Index">ALL</option>
         <option value="~/UnCheckedCars/Index?ploc=CDO">CDO</option>
         <option value="~/UnCheckedCars/Index?ploc=CJE">CJE</option>
         <option value="~/UnCheckedCars/Index?ploc=CDO">CJN</option>
@@ -35,9 +37,8 @@
         <option value="~/UnCheckedCars/Index?ploc=LFM">LFM</option>
         <option value="~/UnCheckedCars/Index?ploc=WDC">WDC</option>
     </select>
-    <input type=button value="Go" onclick="goToNewPage()" />
 </form>
-
+</h2>
 <table class="table">
     <tr>
 
