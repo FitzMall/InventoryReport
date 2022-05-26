@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<WebApplication7.Models.UnCheckedCar>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cars Not Checked Out";
     var headertext = "Cars Not Checked Out at All Locations";
     if (ViewBag.LocationCode != null)
     {
         headertext = "Cars Not Checked Out at Location: " + ViewBag.LocationCode;
     }
+    
 }
 
 <h2>
     @headertext
-
-
+</h2>
 
 
 <form action="Index">
@@ -22,7 +22,7 @@
         <option value="~/UnCheckedCars/Index?ploc=CDO">CDO</option>
         <option value="~/UnCheckedCars/Index?ploc=CJE">CJE</option>
         <option value="~/UnCheckedCars/Index?ploc=CDO">CJN</option>
-        <option value="~/UnCheckedCars/Index?ploc=CJN">FAM</option>
+        <option value="~/UnCheckedCars/Index?ploc=FAM">FAM</option>
         <option value="~/UnCheckedCars/Index?ploc=FBS">FBS</option>
         <option value="~/UnCheckedCars/Index?ploc=FCG">FCG</option>
         <option value="~/UnCheckedCars/Index?ploc=FHG">FHG</option>
@@ -38,7 +38,6 @@
         <option value="~/UnCheckedCars/Index?ploc=WDC">WDC</option>
     </select>
 </form>
-</h2>
 <table class="table">
     <tr>
 
