@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Cars Not Checked Out";
+    //ViewBag.SortOrder //
     var headertext = "Cars Not Checked Out at All Locations";
     if (ViewBag.LocationCode != null)
     {
         headertext = "Cars Not Checked Out at Location: " + ViewBag.LocationCode;
     }
-    
+
 }
 
 <h2>
@@ -43,22 +44,70 @@
     <tr>
 
         <th>
-            Year
+            @{ if (ViewBag.SortOrder != "Year_Descending")
+                {
+                    @Html.ActionLink("Year", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "Year_Descending" })
+                }
+                else
+                {
+                    @Html.ActionLink("Year", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "Year" })
+                }
+            }            
         </th>
         <th>
-            Make
+            @{ if (ViewBag.SortOrder != "Make_Descending")
+                {
+                    @Html.ActionLink("Make", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "Make_Descending" })
+                }
+                else
+                {
+                    @Html.ActionLink("Make", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "Make" })
+                }
+            }
         </th>
         <th>
-            Model
+            @{ if (ViewBag.SortOrder != "Model_Descending")
+                {
+                    @Html.ActionLink("Model", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "Model_Descending" })
+                }
+                else
+                {
+                    @Html.ActionLink("Model", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "Model" })
+                }
+            }
         </th>
         <th>
-            Stock #
+            @{ if (ViewBag.SortOrder != "StockNum_Descending")
+                {
+                    @Html.ActionLink("Stock#", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "StockNum_Descending" })
+                }
+                else
+                {
+                    @Html.ActionLink("Stock#", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "StockNum" })
+                }
+            }
         </th>
         <th>
-            VIN
+            @{ if (ViewBag.SortOrder != "VIN_Descending")
+                {
+                    @Html.ActionLink("VIN", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "VIN_Descending" })
+                }
+                else
+                {
+                    @Html.ActionLink("VIN", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "VIN" })
+                }
+            }
         </th>
         <th>
-            Location Code
+               @{ if (ViewBag.SortOrder != "Location_Descending")
+                    {
+                        @Html.ActionLink("Location", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "Location_Descending" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Location", "Index", new {ploc = ViewBag.LocationCode,  sortOrder = "Location" })
+                    }
+                }
         </th>
         <th></th>
     </tr>

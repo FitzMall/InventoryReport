@@ -14,19 +14,98 @@ namespace WebApplication7.Models
         private ChecklistsEntities db = new ChecklistsEntities();
 
         // GET: UnCheckedCars
-        public ActionResult Index(string ploc)
+        public ActionResult Index(string ploc, string sortOrder)
         {
+            var SORTED_UnCheckedCars = from sDD in db.UnCheckedCars.OrderBy(a => a.loc)
+                                                   select sDD;
 
-                if (ploc == null) {
+            if (ploc == null) {
                 ploc = "";
             }
-                if (ploc == "") { 
-                    return View(db.UnCheckedCars.ToList());
-                }
+                if (ploc == "") {
+            }
+            else
+            {
+                SORTED_UnCheckedCars = from sDD in db.UnCheckedCars.Where(a => a.loc == ploc)
+                                       select sDD;
+
+            }
 
             ViewBag.LocationCode = ploc;
 
-               return View(db.UnCheckedCars.Where(a => a.loc == ploc));
+
+            SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.MetaDataValue7);
+
+            switch (sortOrder)
+            {
+                case "VIN":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.MetaDataValue7);
+                    break;
+
+                case "VIN_Descending":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.MetaDataValue7);
+                    break;
+
+                case "Make":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.MetaDataValue4 + a.MetaDataValue5);
+                    break;
+
+                case "Make_Descending":
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.MetaDataValue4 + a.MetaDataValue5);
+                    break;
+
+                case "Model":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.MetaDataValue5);
+                    break;
+
+                case "Model_Descending":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.MetaDataValue5);
+                    break;
+
+                case "StockNum":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.MetaDataValue6);
+                    break;
+
+                case "StockNum_Descending":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.MetaDataValue6);
+                    break;
+
+                case "Year":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.MetaDataValue3);
+                    break;
+
+                case "Year_Descending":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.MetaDataValue3);
+                    break;
+              case "Location":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.loc);
+                    break;
+
+                case "Location_Descending":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.loc);
+                    break;
+
+                default:
+
+                    break;
+
+            }
+
+            ViewBag.SortOrder = sortOrder;
+            return View(SORTED_UnCheckedCars);
+
+
         }
 
         // GET: UnCheckedCars/Details/5
