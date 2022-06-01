@@ -105,12 +105,12 @@ namespace WebApplication7.Models
 
                 case "Days":
 
-                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.days);
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.daysn);
                     break;
 
                 case "Days_Descending":
 
-                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.days);
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.daysn);
                     break;
 
                 default:

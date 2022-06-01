@@ -114,7 +114,7 @@
                 }
             </th>
             <th>
-                @{ if (ViewBag.SortOrder != "DaysInStock_Descending")
+                @{ if (ViewBag.SortOrder != "Days_Descending")
                     {
 
                         @Html.ActionLink("Days In Stock", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Days_Descending" })
