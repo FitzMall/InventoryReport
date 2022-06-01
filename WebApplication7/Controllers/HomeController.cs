@@ -12,6 +12,11 @@ namespace WebApplication7.Controllers
         {
             return View();
         }
+        public ActionResult JJFServer()
+        {
+
+            return Redirect("http://jjfserver/default.asp");
+        }
 
         public ActionResult About()
         {
