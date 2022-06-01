@@ -13,6 +13,13 @@ namespace WebApplication7.Models
     {
         private ChecklistsEntities db = new ChecklistsEntities();
 
+        public ActionResult GoToFitzMall(string keywordSearch)
+        {
+
+            return Redirect("https://responsive.fitzmall.com/Inventory/SearchResults?KeyWordSearch=" + keywordSearch + "&Sort=&inventoryGrid_length=10&UseCriteria=true");
+        }
+
+
         // GET: UnCheckedCars
         public ActionResult Index(string ploc, string sortOrder)
         {
