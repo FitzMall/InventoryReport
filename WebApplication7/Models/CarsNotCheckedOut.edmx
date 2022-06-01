@@ -282,7 +282,8 @@ warning 6002: The table/view 'Checklists.dbo.UnCheckedCars' does not have a prim
           <Property Name="FullName" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
           <Property Name="DateUpdated" Type="datetime" Nullable="false" />
-          <Property Name="loc" Type="varchar" MaxLength="4" />
+          <Property Name="loc" Type="varchar" MaxLength="3" />
+          <Property Name="days" Type="char" MaxLength="4" />
         </EntityType>
         <Association Name="FK__Checklist__Check__2A4B4B5E">
           <End Role="Checklist" Type="Self.Checklist" Multiplicity="1" />
@@ -471,7 +472,8 @@ warning 6002: The table/view 'Checklists.dbo.UnCheckedCars' does not have a prim
     [UnCheckedCars].[FullName] AS [FullName], 
     [UnCheckedCars].[DateCreated] AS [DateCreated], 
     [UnCheckedCars].[DateUpdated] AS [DateUpdated], 
-    [UnCheckedCars].[loc] AS [loc]
+    [UnCheckedCars].[loc] AS [loc], 
+    [UnCheckedCars].[days] AS [days]
     FROM [dbo].[UnCheckedCars] AS [UnCheckedCars]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Checklist__Check__2A4B4B5E" Association="Self.FK__Checklist__Check__2A4B4B5E">
@@ -889,7 +891,8 @@ warning 6002: The table/view 'Checklists.dbo.UnCheckedCars' does not have a prim
           <Property Name="FullName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateUpdated" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="loc" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="loc" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="days" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1139,6 +1142,7 @@ warning 6002: The table/view 'Checklists.dbo.UnCheckedCars' does not have a prim
           <EntitySetMapping Name="UnCheckedCars">
             <EntityTypeMapping TypeName="ChecklistsModel.UnCheckedCar">
               <MappingFragment StoreEntitySet="UnCheckedCars">
+                <ScalarProperty Name="days" ColumnName="days" />
                 <ScalarProperty Name="loc" ColumnName="loc" />
                 <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />

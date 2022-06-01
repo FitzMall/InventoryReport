@@ -177,10 +177,10 @@
       <DependentUpon>CarsNotCheckedOut.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Locations_lkupController.cs" />
+    <Compile Include="Controllers\UnCheckedCarsController.cs" />
     <Compile Include="Models\UnCheckedCar.cs">
       <DependentUpon>CarsNotCheckedOut.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\UnCheckedCarsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlMapper.cs" />
     <Compile Include="SqlMapperUtil.cs" />

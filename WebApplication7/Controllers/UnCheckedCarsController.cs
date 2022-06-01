@@ -103,6 +103,16 @@ namespace WebApplication7.Models
                     SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.loc);
                     break;
 
+                case "Days":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderBy(a => a.days);
+                    break;
+
+                case "Days_Descending":
+
+                    SORTED_UnCheckedCars = SORTED_UnCheckedCars.OrderByDescending(a => a.days);
+                    break;
+
                 default:
 
                     break;

@@ -29,5 +29,6 @@ namespace WebApplication7.Models
         public System.DateTime DateCreated { get; set; }
         public System.DateTime DateUpdated { get; set; }
         public string loc { get; set; }
+        public string days { get; set; }
     }
 }
