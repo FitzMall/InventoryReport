@@ -8,11 +8,16 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="container body-content">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            @Html.ActionLink("JJFServer", "JJFServer", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+    </div>
+    <div class="container body-content" style="width:initial">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Fitzgerald Auto JJF</p>
+            <p>&copy; @DateTime.Now.Year - Fitzgerald ASP.NET Application</p>
         </footer>
     </div>
 
