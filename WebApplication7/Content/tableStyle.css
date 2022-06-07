@@ -161,12 +161,12 @@ th {
 #usedreportheaders th {
     background-color: rgb(235,235,235);
     position: sticky;
-    top: 50px;
+    top: 0px;
 }
 
 #usedreportheaders tr:nth-child(1) {
     position: sticky;
-    top: 50px;
+    top: 0px;
 }
 
 #usedreportheaders tr:nth-child(2) {
