@@ -10,39 +10,19 @@
         {
             headertext = "Cars Not Checked Out at Location: " + ViewBag.LocationCode;
         }
-    }
+        else
+        {
 
+        }
+    }
 }
 <link href="~/Content/tableStyle.css" rel="stylesheet" type="text/css" sizes="">
 
-<h2 style="margin-left:11%">@headertext</h2>
 
-<form action="Index" style="align-self:center">
-    <select id="SelectLocation" onchange="goToNewPage()">
-        <option value="~/UnCheckedCars/Index"></option>
-        <option value="~/UnCheckedCars/Index">ALL</option>
-        <option value="~/UnCheckedCars/Index?ploc=CDO">CDO</option>
-        <option value="~/UnCheckedCars/Index?ploc=CJE">CJE</option>
-        <option value="~/UnCheckedCars/Index?ploc=CJN">CJN</option>
-        <option value="~/UnCheckedCars/Index?ploc=FAM">FAM</option>
-        <option value="~/UnCheckedCars/Index?ploc=FBS">FBS</option>
-        <option value="~/UnCheckedCars/Index?ploc=FCG">FCG</option>
-        <option value="~/UnCheckedCars/Index?ploc=FHG">FHG</option>
-        <option value="~/UnCheckedCars/Index?ploc=FHT">FHT</option>
-        <option value="~/UnCheckedCars/Index?ploc=FLP">FLP</option>
-        <option value="~/UnCheckedCars/Index?ploc=FMM">FMM</option>
-        <option value="~/UnCheckedCars/Index?ploc=FOC">FOC</option>
-        <option value="~/UnCheckedCars/Index?ploc=FSS">FSS</option>
-        <option value="~/UnCheckedCars/Index?ploc=FTO">FTO</option>
-        <option value="~/UnCheckedCars/Index?ploc=FTN">FTN</option>
-        <option value="~/UnCheckedCars/Index?ploc=LFO">LFO</option>
-        <option value="~/UnCheckedCars/Index?ploc=LFT">LFT</option>
-        <option value="~/UnCheckedCars/Index?ploc=LFM">LFM</option>
-        <option value="~/UnCheckedCars/Index?ploc=WDC">WDC</option>
-    </select>
-</form>
+<h2 style="margin-left:1%">@headertext</h2>
 
-<table class="table" style="margin-left: 11%; width: 85%; margin-bottom: 0px">
+
+<table class="table" style="margin-left: 1%; width: 95%; margin-bottom: 0px">
     <thead class="thead" id="usedreportheaders">
 
         <tr>
@@ -103,6 +83,214 @@
                 }
             </th>
             <th>
+                <form action="Index" style="align-self:center">
+                    <select id="SelectLocation"  onchange ="goToNewPage()">
+                        <option value="~/UnCheckedCars/Index"></option>
+                        <option value="~/UnCheckedCars/Index">ALL</option>
+
+                        @{ if (ViewBag.LocationCode == "CDO")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=CDO"> CDO </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=CDO"> CDO </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "CJE")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=CJE"> CJE </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=CJE"> CJE </option>
+                            }
+                        }
+
+
+
+                        @{ if (ViewBag.LocationCode == "CJN")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=CJN"> CJN </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=CJN"> CJN </option>
+                            }
+                        }
+
+
+
+                        @{ if (ViewBag.LocationCode == "FAM")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FAM" > FAM </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FAM" > FAM </option>
+
+                            }
+                        }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FBS")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FBS" > FBS </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FBS" > FBS </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FCG")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FCG" > FCG </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FCG" > FCG </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FHG")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FHG" > FHG </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FHG" > FHG </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FHT")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FHT" > FHT </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FHT" > FHT </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FLP")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FLP" > FLP </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FLP" > FLP </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FMM")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FMM" > FMM </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FMM" > FMM </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FOC")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FOC" > FOC </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FOC" > FOC </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FSS")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FSS" > FSS </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FSS" > FSS </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FTO")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FTO" > FTO </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FTO" > FTO </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "FTN")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=FTN" > FTN </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=FTN" > FTN </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "LFO")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=LFO" > LFO </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=LFO" > LFO </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "LFT")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=LFT" > LFT </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=LFT" > LFT </option>
+                            }
+                        }
+
+
+                        @{ if (ViewBag.LocationCode == "LFM")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=LFM" > LFM </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=LFM" > LFM </option>
+                            }
+                        }
+
+                        @{ if (ViewBag.LocationCode == "WDC")
+                            {
+                                <option selected value="~/UnCheckedCars/Index?ploc=WDC" > WDC </option>
+                            }
+                            else
+                            {
+                                <option value="~/UnCheckedCars/Index?ploc=WDC" > WDC </option>
+                            }
+                        }
+
+
+                    </select>
+                </form>
                 @{ if (ViewBag.SortOrder != "Location_Descending")
                     {
                         @Html.ActionLink("Location", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Location_Descending" })
@@ -132,30 +320,30 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.MetaDataValue3)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.MetaDataValue4)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.MetaDataValue5)
-    </td>
-    <td>
-        @Html.ActionLink("" + item.MetaDataValue6, "GoToFitzMall", new { keywordSearch = item.MetaDataValue6 }, new { target = "_blank" })
-    </td>
-    <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue5)
+            </td>
+            <td>
+                @Html.ActionLink("" + item.MetaDataValue6, "GoToFitzMall", new { keywordSearch = item.MetaDataValue6 }, new { target = "_blank" })
+            </td>
+            <td>
 
-        @Html.DisplayFor(modelItem => item.MetaDataValue7)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.loc)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.days)
-    </td>
-</tr>
+                @Html.DisplayFor(modelItem => item.MetaDataValue7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.days)
+            </td>
+        </tr>
     }
 
 </table>
