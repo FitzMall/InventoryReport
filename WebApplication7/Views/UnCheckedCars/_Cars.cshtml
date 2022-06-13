@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebApplication7.Models.UnCheckedCar>
+
+<script type="text/javascript" src="~/Scripts/LocationPick.js"></script>
+
+<div class="sidebar">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <a href="#Section_@Model[i].ID" id="SecitonLink_@Model[i].ID" class="">@Model[i].SectionLabel</a>
+    }
+    <br />
+    <button type="button" class="btn btn-primary" data-target="#myModal" data-toggle="modal">Change Status</button>
+    <button type="submit" class="btn btn-success" id="Return" value="Return">Return</button>
+    <button name="submit" type="button" id="saveForm3" value="Save" class="btn btn-primary saveForm">Save</button>
+</div>
+
+
