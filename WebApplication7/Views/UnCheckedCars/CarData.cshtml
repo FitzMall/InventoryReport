@@ -1,0 +1,148 @@
+﻿@model IEnumerable<WebApplication7.Models.UnCheckedCar>
+
+@{
+    ViewBag.Title = "Cars Not Checked Out";
+    //ViewBag.SortOrder //
+    var headertext = "Cars Not Checked Out at All Locations";
+    if (ViewBag.LocationCode != null)
+    {
+        if (ViewBag.LocationCode != "")
+        {
+            headertext = "Cars Not Checked Out at Location: " + ViewBag.LocationCode;
+        }
+        else
+        {
+
+        }
+    }
+}
+<link href="~/Content/tableStyle.css" rel="stylesheet" type="text/css" sizes="">
+
+
+<h2 style="margin-left:1%">@headertext</h2>
+
+
+<table class="table" style="margin-left: 1%; width: 95%; margin-bottom: 0px">
+    <thead class="thead" id="usedreportheaders">
+
+        <tr>
+
+            <th>
+                @{ if (ViewBag.SortOrder != "Year_Descending")
+                    {
+                        @Html.ActionLink("Year", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Year_Descending" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Year", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Year" })
+                    }
+                }
+            </th>
+            <th>
+                @{ if (ViewBag.SortOrder != "Make_Descending")
+                    {
+                        @Html.ActionLink("Make", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Make_Descending" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Make", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Make" })
+                    }
+                }
+            </th>
+            <th>
+                @{ if (ViewBag.SortOrder != "Model_Descending")
+                    {
+                        @Html.ActionLink("Model", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Model_Descending" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Model", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Model" })
+                    }
+                }
+            </th>
+            <th>
+                @{ if (ViewBag.SortOrder != "StockNum_Descending")
+                    {
+                        @Html.ActionLink("Stock#", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "StockNum_Descending" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Stock#", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "StockNum" })
+                    }
+                }
+            </th>
+            <th>
+                @{ if (ViewBag.SortOrder != "VIN_Descending")
+                    {
+                        @Html.ActionLink("VIN", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "VIN_Descending" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("VIN", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "VIN" })
+                    }
+                }
+            </th>
+            <th>
+//stuff
+                </form>
+                @{ if (ViewBag.SortOrder != "Location_Descending")
+                    {
+                        @Html.ActionLink("Location", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Location_Descending" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Location", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Location" })
+                    }
+                }
+            </th>
+            <th>
+                @{ if (ViewBag.SortOrder != "Days_Descending")
+                    {
+
+                        @Html.ActionLink("Days In Stock", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Days_Descending" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Days In Stock", "Index", new { ploc = ViewBag.LocationCode, sortOrder = "Days" })
+                    }
+                }
+
+            </th>
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetaDataValue5)
+            </td>
+            <td>
+                @Html.ActionLink("" + item.MetaDataValue6, "GoToFitzMall", new { keywordSearch = item.MetaDataValue6 }, new { target = "_blank" })
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.MetaDataValue7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.days)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@Scripts.Render("~/Scripts/LocationPick.js")
+
+

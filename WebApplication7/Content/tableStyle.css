@@ -161,7 +161,7 @@ th {
 #usedreportheaders th {
     background-color: rgb(235,235,235);
     position: sticky;
-    top: 0px;
+    top: 50px;
 }
 
 #usedreportheaders tr:nth-child(1) {
