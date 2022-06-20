@@ -111,6 +111,10 @@
         margin-left: 0 !important;
         width: 80% !important;
     }
+
+    table select {
+        visibility:hidden;
+    }
 }
 
 
